@@ -17,7 +17,7 @@ class WorldWidePanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
       child: GridView(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),

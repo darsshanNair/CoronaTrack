@@ -8,15 +8,14 @@ class MostAffectedPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
+    return Card(
       child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: 5,
           itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Row(
                 children: <Widget>[
                   Image(
