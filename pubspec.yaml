@@ -1,0 +1,33 @@
+name: covid_tracker
+description: COVID-19 Tracker App with a rich UI built using Flutter
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  url_launcher: ^5.4.5
+  shared_preferences: ^0.5.7
+  http: ^0.12.1
+  provider: ^4.0.5+1
+  tuple: ^1.0.3  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  fonts:
+   - family: Circular
+     fonts:
+       - asset: assets/fonts/CircularStd-Medium.ttf
+       - asset: assets/fonts/CircularAir-Light.ttf
+         weight: 100
+       - asset: assets/fonts/CircularStd-Bold.ttf
+         weight: 500
