@@ -1,16 +1,14 @@
-# covid_tracker
+# CoronaTrack with Flutter UI
 
-A new Flutter project.
+## Features
+- Current statistics of global total confirmed, deaths, recovered cases.
+- Statistics of countries and regions total cases count
+
+## Technical features
+- State management with Provider architecture
+- Dynamic theme change using provider (dark mode / light mode)
+- Bottom navigation bar implementation
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone or download
+- Go to project destination and run it using `flutter run`
