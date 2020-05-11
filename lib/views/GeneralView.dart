@@ -1,3 +1,4 @@
+import 'package:covid_tracker/widgets/loadingAnimation.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,19 @@ class GeneralView extends StatelessWidget {
               homeProvider.globalVirusInfo.deaths,
             ),
             builder: (_, globalVirusInfo, __) {
-              return WorldWidePanel(
-                confirmedPanelValues: globalVirusInfo.item1,
-                activePanelValues: globalVirusInfo.item2,
-                recoveredPanelValues: globalVirusInfo.item3,
-                deathPanelValues: globalVirusInfo.item4,
-              );
+              return globalVirusInfo.item1 == 0
+                  ? Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Center(
+                        child: LoadingAnimation(),
+                      ),
+                    )
+                  : WorldWidePanel(
+                      confirmedPanelValues: globalVirusInfo.item1,
+                      activePanelValues: globalVirusInfo.item2,
+                      recoveredPanelValues: globalVirusInfo.item3,
+                      deathPanelValues: globalVirusInfo.item4,
+                    );
             },
           ),
           MostAffectedHeader(),
@@ -44,7 +52,7 @@ class GeneralView extends StatelessWidget {
                   ? Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Center(
-                        child: CircularProgressIndicator(),
+                        child: LoadingAnimation(),
                       ),
                     )
                   : MostAffectedPanel(countriesInfoList: countriesInfo.item1);
