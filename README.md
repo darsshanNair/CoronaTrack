@@ -8,6 +8,7 @@
 - State management with Provider architecture
 - Dynamic theme change using provider (dark mode / light mode)
 - Bottom navigation bar implementation
+- Animated loading using AnimatedWidget
 
 ## Getting Started
 - Clone or download
