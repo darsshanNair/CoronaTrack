@@ -1,11 +1,10 @@
 import 'package:covid_tracker/app/AppColors.dart';
-import 'package:covid_tracker/providers/MainProvider.dart';
+import 'package:covid_tracker/widgets/DarkModeButton.dart';
 import 'package:flutter/material.dart';
 
 import 'package:covid_tracker/app/AppStrings.dart';
 import 'package:covid_tracker/views/CountriesView.dart';
 import 'package:covid_tracker/views/GeneralView.dart';
-import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -21,19 +20,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    var _mainProvider = Provider.of<MainProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          IconButton(
-            icon: Icon(_mainProvider.darkModeStatus
-                ? Icons.lightbulb_outline
-                : Icons.highlight),
-            onPressed: () {
-              _mainProvider.darkModeStatus = !_mainProvider.darkModeStatus;
-            },
-          )
+          DarkModeButton(),
         ],
         title: Text(AppStrings.appName),
         centerTitle: false,
