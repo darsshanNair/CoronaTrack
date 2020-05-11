@@ -13,7 +13,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  bool _isDisplayHomePage = true;
+  int _currentIndex = 0;
+  final List<Widget> tabList = [
+    GeneralView(),
+    CountriesView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,44 +38,29 @@ class _HomeViewState extends State<HomeView> {
         title: Text(AppStrings.appName),
         centerTitle: false,
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: AppColors.primaryBlack,
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                iconSize: 30.0,
-                padding: EdgeInsets.only(left: 28.0),
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isDisplayHomePage = true;
-                  });
-                },
-              ),
-              IconButton(
-                iconSize: 30.0,
-                padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(
-                  Icons.flag,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isDisplayHomePage = false;
-                  });
-                },
-              ),
-            ],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.blueGrey,
+        backgroundColor: AppColors.primaryBlack,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text(AppStrings.home),
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flag),
+            title: Text(AppStrings.worldWide),
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
-      body: _isDisplayHomePage ? GeneralView() : CountriesView(),
+      body: tabList[_currentIndex],
     );
   }
 }
