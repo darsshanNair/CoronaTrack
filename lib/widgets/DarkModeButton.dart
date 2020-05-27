@@ -8,7 +8,7 @@ class DarkModeButton extends StatelessWidget {
     var _mainProvider = Provider.of<MainProvider>(context);
     return AnimatedOpacity(
       opacity: _mainProvider.darkModeStatus ? 0.3 : 1.0,
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 500),
       child: IconButton(
         icon: Icon(
           Icons.lightbulb_outline,

@@ -1,3 +1,4 @@
+import 'package:covid_tracker/app/AppStrings.dart';
 import 'package:covid_tracker/widgets/loadingAnimation.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
@@ -18,7 +19,7 @@ class GeneralView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          QuoteContainer(),
+          QuoteContainer(AppStrings.homeViewQuote),
           WorldWideHeader(),
           Selector<HomeProvider, Tuple4<int, int, int, int>>(
             selector: (_, homeProvider) => Tuple4(

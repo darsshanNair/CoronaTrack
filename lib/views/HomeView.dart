@@ -1,10 +1,12 @@
 import 'package:covid_tracker/app/AppColors.dart';
+import 'package:covid_tracker/providers/HomeProvider.dart';
 import 'package:covid_tracker/widgets/DarkModeButton.dart';
 import 'package:flutter/material.dart';
 
 import 'package:covid_tracker/app/AppStrings.dart';
 import 'package:covid_tracker/views/CountriesView.dart';
 import 'package:covid_tracker/views/GeneralView.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -20,13 +22,14 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    var _homeProvider = Provider.of<HomeProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
           DarkModeButton(),
         ],
         title: Text(AppStrings.appName),
-        centerTitle: false,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -48,6 +51,7 @@ class _HomeViewState extends State<HomeView> {
           setState(() {
             _currentIndex = index;
           });
+          _homeProvider.filterCountriesInfoByQuery("");
         },
       ),
       body: tabList[_currentIndex],

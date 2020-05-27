@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:covid_tracker/app/AppStrings.dart';
-
 class QuoteContainer extends StatelessWidget {
+  final String quote;
+  QuoteContainer(this.quote);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class QuoteContainer extends StatelessWidget {
       margin: EdgeInsets.all(10),
       height: 100,
       child: Text(
-        AppStrings.homeViewQuote,
+        quote,
         textAlign: TextAlign.center,
         style: TextStyle(
           fontWeight: FontWeight.bold,

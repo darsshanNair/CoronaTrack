@@ -14,4 +14,5 @@ class AppStrings {
   static const String mostAffectedCountries = "Most Affected Countries";
   static const String countriesCardMessage =
       "Click on the country to set it as default";
+  static const String statistics = "Statistics";
 }
