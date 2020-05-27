@@ -12,6 +12,7 @@ class HomeProvider with ChangeNotifier {
   );
 
   List<CountryInfo> _countriesInfo = [];
+  List<CountryInfo> _filteredCountriesInfo = [];
   VirusInfoService _virusInfoService;
 
   HomeProvider() {
@@ -22,6 +23,7 @@ class HomeProvider with ChangeNotifier {
 
   GlobalVirusInfo get globalVirusInfo => _globalVirusInfo;
   List<CountryInfo> get countriesInfo => _countriesInfo;
+  List<CountryInfo> get filteredCountriesInfo => _filteredCountriesInfo;
 
   Future<GlobalVirusInfo> getGlobalVirusInfo() async {
     var response = await _virusInfoService.fetchGlobalVirusInfo();
@@ -38,10 +40,22 @@ class HomeProvider with ChangeNotifier {
     var response = await _virusInfoService.fetchAllCountriesVirusInfo();
     if (response is List<CountryInfo>) {
       _countriesInfo = response;
+      _filteredCountriesInfo = response;
       notifyListeners();
       return _countriesInfo;
     } else {
       throw Exception("Error fetching data");
     }
+  }
+
+  void filterCountriesInfoByQuery(String filterQuery) {
+    var _filteredCountries = _countriesInfo
+        .where(
+          (country) =>
+              country.country.toLowerCase().contains(filterQuery.toLowerCase()),
+        )
+        .toList();
+    _filteredCountriesInfo = _filteredCountries;
+    notifyListeners();
   }
 }

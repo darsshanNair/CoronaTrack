@@ -1,4 +1,5 @@
 import 'package:covid_tracker/app/AppTheme.dart';
+import 'package:covid_tracker/providers/CountryStatsProvider.dart';
 import 'package:covid_tracker/providers/HomeProvider.dart';
 import 'package:covid_tracker/providers/MainProvider.dart';
 import 'package:covid_tracker/views/HomeView.dart';
@@ -28,13 +29,18 @@ class MaterialAppWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _mainProvider = Provider.of<MainProvider>(context);
-    return MaterialApp(
-      title: 'Covid-19 Tracker',
-      debugShowCheckedModeBanner: false,
-      theme: _mainProvider.darkModeStatus
-          ? AppTheme.darkTheme
-          : AppTheme.lightTheme,
-      home: HomeView(),
+    return GestureDetector(
+      onTap: () {
+        WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
+      },
+      child: MaterialApp(
+        title: 'Covid-19 Tracker',
+        debugShowCheckedModeBanner: false,
+        theme: _mainProvider.darkModeStatus
+            ? AppTheme.darkTheme
+            : AppTheme.lightTheme,
+        home: HomeView(),
+      ),
     );
   }
 }
